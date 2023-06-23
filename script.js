@@ -112,6 +112,7 @@ const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 greetArr('Hello')('Durell'); // Hello Durell
 */
 
+// The call and apply Methods
 const lufthansa = {
   airline: 'Lufthansa',
   iataCode: 'LH',
@@ -161,3 +162,51 @@ console.log(swiss);
 
 book.call(swiss, ...flightData);
 console.log(swiss);
+
+// Bind Method
+// book.call(eurowings, 23, 'Sarah Williams');
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Steven Williams');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Durell Mwakulo');
+bookEW23('Marth Cooper');
+
+// With Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this); // elment of the DOM
+
+  this.planes++;
+  console.log(this.planes);
+};
+// lufthansa.buyPlane();// this keyword points to lufthansa
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial Applications
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23); // the null can be any other value beacause it will not work. That's an arrow function it does not have a this keyword.
+// addVAT = value => value + value * .23
+
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+// Challenge
+const addTaxRate = function (rate) {
+  return function (value) {
+    console.log(value + value * rate);
+  };
+};
+
+const taxRate = addTaxRate(0.23);
+taxRate(100);
+taxRate(23);
