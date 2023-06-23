@@ -63,6 +63,7 @@ newPassport(durell);
 checkIn(flight, durell);
 */
 
+/*
 // Functions Accepting Callback Functions
 const oneWord = function (str) {
   return str.replace(/ /g, '').toLowerCase();
@@ -90,3 +91,21 @@ const high5 = function () {
 };
 document.body.addEventListener('click', high5);
 ['Durell', 'Grant', 'Chief'].forEach(high5);
+*/
+
+// Functions REturning Functions
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey');
+greeterHey('Durell'); // Hey Durell
+greeterHey('Jonas'); // Hey Jonas
+
+greet('Hello')('Durell'); // Hello Durell
+
+// Challenge
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+greetArr('Hello')('Durell'); // Hello Durell
