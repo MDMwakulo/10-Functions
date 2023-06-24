@@ -213,6 +213,7 @@ taxRate(100);
 taxRate(23);
 */
 
+/*
 // Coding Challenge #1
 const poll = {
   question: 'What is your favourite programming language?',
@@ -247,3 +248,22 @@ pollBtn.addEventListener('click', poll.registerNewAnswer.bind(poll));
 
 poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+*/
+
+// IIFE
+const runOnce = function () {
+  console.log('This will never run again');
+};
+runOnce();
+
+(function () {
+  console.log('This will never run again');
+  const isPrivate = 23;
+})();
+
+(() => console.log('This will also never run again'))();
+
+{
+  const isPrivate = 23;
+}
+console.log(isPrivate);
