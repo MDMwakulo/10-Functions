@@ -289,6 +289,7 @@ booker();
 console.dir(booker);
 */
 
+/*
 // Example 1
 let f;
 const g = function () {
@@ -327,3 +328,13 @@ const boardPassengers = function (n, wait) {
 };
 const perGroup = 1000;
 boardPassengers(180, 3);
+*/
+
+// Coding Challenge #2
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+  document
+    .querySelector('body')
+    .addEventListener('click', () => (header.style.color = 'blue'));
+})();
